@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $("#loginForm").submit(function(event) {
-        event.preventDefault();
+    $("#loginBtn").click(function(event) {
+        event.preventDefault(); // Prevent default button behavior
         validateLogin();
     });
 });
@@ -12,18 +12,23 @@ function validateLogin() {
 
     if (password.length < 6) {
         // Password is not valid
-        messageElement.text("Password should be at least 6 characters.").css("color", "red");
+        showMessage("Password should be at least 6 characters.", "red");
         $("#password").css("border", "2px solid red");
     } else {
         // Password is valid
-        messageElement.text("Success!").css("color", "green");
+        showMessage("Success!", "green");
         $("#password").css("border", "2px solid green");
     }
-
-    // Reset values
-    $("#username").val("");
-    $("#password").val("");
 }
+
+function showMessage(message, color) {
+    let messageElement = $("#message");
+    messageElement.text(message).css("color", color);
+}
+
+
+
+
 
 
 
