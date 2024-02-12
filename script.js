@@ -1,4 +1,34 @@
+$(document).ready(function() {
+    $("#loginForm").submit(function(event) {
+        event.preventDefault();
+        validateLogin();
+    });
+});
+
 function validateLogin() {
+    let username = $("#username").val();
+    let password = $("#password").val();
+    let messageElement = $("#message");
+
+    if (password.length < 6) {
+        // Password is not valid
+        messageElement.text("Password should be at least 6 characters.").css("color", "red");
+        $("#password").css("border", "2px solid red");
+    } else {
+        // Password is valid
+        messageElement.text("Success!").css("color", "green");
+        $("#password").css("border", "2px solid green");
+    }
+
+    // Reset values
+    $("#username").val("");
+    $("#password").val("");
+}
+
+
+
+
+/*function validateLogin() {
 
     let usernameInput = document.getElementById("username");
     let username = usernameInput.value;
@@ -24,4 +54,4 @@ function validateLogin() {
     passwordInput.value = "";
 
     return false;
-}
+}*/
